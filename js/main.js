@@ -5,7 +5,13 @@ AOS.init({
 });
 jQuery(document).ready(function ($) {
     "use strict";
-    var slider = function () { $('.nonloop-block-3').owlCarousel({ center: false, items: 1, loop: false, stagePadding: 15, margin: 20, nav: true, navText: ['<i class="fas fa-arrow-left">', '<i class="fas fa-arrow-right">'], responsive: { 600: { margin: 20, items: 2 }, 1000: { margin: 20, items: 3 }, 1200: { margin: 20, items: 3 } } }); }; slider(); var siteMenuClone = function () {
+    var slider = function () { 
+        $('.nonloop-block-3').owlCarousel({ 
+            center: false, items: 1, loop: false, stagePadding: 15, margin: 20, nav: true, navText: ['<i class="fas fa-arrow-left">', '<i class="fas fa-arrow-right">'], responsive: { 600: { margin: 20, items: 2 }, 1000: { margin: 20, items: 3 }, 1200: { margin: 20, items: 3 } } 
+        }); 
+    }; 
+    slider(); 
+    var siteMenuClone = function () {
         $('<div class="site-mobile-menu"></div>').prependTo('.site-wrap'); $('<div class="site-mobile-menu-header"></div>').prependTo('.site-mobile-menu'); $('<div class="site-mobile-menu-close "></div>').prependTo('.site-mobile-menu-header'); $('<div class="site-mobile-menu-logo"></div>').prependTo('.site-mobile-menu-header'); $('<div class="site-mobile-menu-body"></div>').appendTo('.site-mobile-menu'); $('.js-logo-clone').clone().appendTo('.site-mobile-menu-logo'); $('<span class="ion-ios-close js-menu-toggle"></div>').prependTo('.site-mobile-menu-close'); $('.js-clone-nav').each(function () { var $this = $(this); $this.clone().attr('class', 'site-nav-wrap').appendTo('.site-mobile-menu-body'); }); setTimeout(function () { var counter = 0; $('.site-mobile-menu .has-children').each(function () { var $this = $(this); $this.prepend('<span class="arrow-collapse collapsed">'); $this.find('.arrow-collapse').attr({ 'data-toggle': 'collapse', 'data-target': '#collapseItem' + counter, }); $this.find('> ul').attr({ 'class': 'collapse', 'id': 'collapseItem' + counter, }); counter++; }); }, 1000); $('body').on('click', '.arrow-collapse', function (e) {
             var $this = $(this); if ($this.closest('li').find('.collapse').hasClass('show')) { $this.removeClass('active'); } else { $this.addClass('active'); }
             e.preventDefault();
